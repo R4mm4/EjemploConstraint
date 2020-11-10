@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     String nombre;
     String pass;
+    Intent ii;
 
     @Override
 
@@ -26,14 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnRegistro =(Button) findViewById(R.id.btnRegistro);
-        btnRegistro.setOnClickListener(new View.OnClickListener() {
-           @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),Registro.class);
-                startActivityForResult(intent,0);
-            }
-        });
+        //Button btnRegistro =(Button) findViewById(R.id.btnRegistro);
+        //btnRegistro.setOnClickListener(new View.OnClickListener() {
+          // @Override
+            //public void onClick(View view) {
+              //
+            //}
+        //});
+         ii = new Intent(getApplicationContext(),Registro.class);
+        startActivityForResult(ii,0);
 
     }
     public void IniciarSecion(View v){
@@ -49,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
         nombre = ((EditText) findViewById(R.id.txtUser)).getText().toString();
         pass = ((EditText) findViewById(R.id.txtPass)).getText().toString();
-        Intent ii = getIntent();
+        ii = getIntent();
         Usuario u= ii.getParcelableExtra("u");
         if(nombre.equals(u.getNombre()) && pass.equals(u.getPass())){
            mToast();
+
         }
 
     }
